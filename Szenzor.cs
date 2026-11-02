@@ -10,7 +10,7 @@
             get { return fogyasztasmW; }
             set
             {
-                fogyasztasmW = value <= 0 ? 50 : value;
+                fogyasztasmW = value > 0 ? value : 50;
             }
         }
 

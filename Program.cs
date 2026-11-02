@@ -67,4 +67,23 @@ try
             szenzorok.Add(kameraSzenzor);
         }
     }
+
+    Console.WriteLine($"Sikeresen beolvasott szenzorok: {szenzorok.Count} db");
+    Console.WriteLine($"Kiszűrt hibás sorok száma: {hibasSorokSzama} db");
+    Console.WriteLine($"\nBeolvasott szenzorok listája:");
+    szenzorok.ForEach(Console.WriteLine);
+    Console.WriteLine($"\nKameraszenzorok külön elemzése:");
+    szenzorok.ForEach(s =>
+    {
+        if (s is KameraSzenzor k)
+        {
+            Console.WriteLine($"- {k.Azonosito} kamera felbontása: {k.FelbontasMP} MP.");
+        }
+    });
+    Console.WriteLine($"\nÖsszesített napi energiaigény (24 óra): {szenzorok.Sum(s => s.NapiEnergiaIgeny(24))} mWh");
+    Console.WriteLine($"Szenzor példányok száma (static): {Szenzor.OsszesSzenzorSzama} db");
+
+} catch (Exception exc)
+{
+    Console.WriteLine(exc);
 }
